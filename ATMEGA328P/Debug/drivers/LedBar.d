@@ -1,4 +1,5 @@
-main.d main.o: .././main.c \
+drivers/LedBar.d drivers/LedBar.o: ../drivers/LedBar.c \
+ ../drivers/LedBar.h \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -9,13 +10,9 @@ main.d main.o: .././main.c \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
- y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h \
- y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
- y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
- ../drivers/LedBar.h
+ y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
+
+../drivers/LedBar.h:
 
 y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -38,15 +35,3 @@ y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h:
 y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
-
-y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h:
-
-y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
-
-y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
-
-y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
-
-y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
-
-../drivers/LedBar.h:

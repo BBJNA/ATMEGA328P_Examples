@@ -7,23 +7,22 @@
 
 #include <avr/io.h>
 #include "avr/sleep.h"
+#include <stdio.h>
+#include <string.h>
 
+
+//Include Drivers
+#include "LedBar.h"
 
 int main(void)
 {
 	
- 	PORTB = 0x01;
- 	DDRB  = 0x01;
- 	PORTD = 0xFF;
- 	DDRD  = 0xFF;
-	PORTC = 0x10;
-	DDRC  = 0x10;
+	initLED();
+	allOn();
 	
     /* Replace with your application code */
     while (1) 
-    {
-		
-				
+    {	
+		sleep_enable();
     }
 }
-
