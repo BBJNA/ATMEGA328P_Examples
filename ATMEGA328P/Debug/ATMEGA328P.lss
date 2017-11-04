@@ -3,27 +3,29 @@ ATMEGA328P.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000104  2**0
+  0 .data         00000000  00800100  00800100  0000011e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000000b0  00000000  00000000  00000054  2**1
+  1 .text         000000ca  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00000104  2**0
+  2 .comment      00000030  00000000  00000000  0000011e  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000134  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000150  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000058  00000000  00000000  00000174  2**0
+  4 .debug_aranges 00000058  00000000  00000000  00000190  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000775  00000000  00000000  000001cc  2**0
+  5 .debug_info   0000081b  00000000  00000000  000001e8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000666  00000000  00000000  00000941  2**0
+  6 .debug_abbrev 000006e6  00000000  00000000  00000a03  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000002ce  00000000  00000000  00000fa7  2**0
+  7 .debug_line   00000333  00000000  00000000  000010e9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000078  00000000  00000000  00001278  2**2
+  8 .debug_frame  00000078  00000000  00000000  0000141c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000379  00000000  00000000  000012f0  2**0
+  9 .debug_str    000003c4  00000000  00000000  00001494  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000038  00000000  00000000  00001669  2**0
+ 10 .debug_loc    0000008c  00000000  00000000  00001858  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000038  00000000  00000000  000018e4  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -63,8 +65,8 @@ Disassembly of section .text:
   6e:	d8 e0       	ldi	r29, 0x08	; 8
   70:	de bf       	out	0x3e, r29	; 62
   72:	cd bf       	out	0x3d, r28	; 61
-  74:	0e 94 4e 00 	call	0x9c	; 0x9c <main>
-  78:	0c 94 56 00 	jmp	0xac	; 0xac <_exit>
+  74:	0e 94 51 00 	call	0xa2	; 0xa2 <main>
+  78:	0c 94 63 00 	jmp	0xc6	; 0xc6 <_exit>
 
 0000007c <__bad_interrupt>:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -75,56 +77,92 @@ Disassembly of section .text:
 
 void initLED(){
 	
-		 	PORTB = 0x01;
-  80:	81 e0       	ldi	r24, 0x01	; 1
-  82:	85 b9       	out	0x05, r24	; 5
-		 	PORTD = 0xFF;
-  84:	8f ef       	ldi	r24, 0xFF	; 255
-  86:	8b b9       	out	0x0b, r24	; 11
-		 	PORTC = 0x10;
-  88:	80 e1       	ldi	r24, 0x10	; 16
-  8a:	88 b9       	out	0x08, r24	; 8
-  8c:	08 95       	ret
+		 	DDRB |= 0X01;
+  80:	20 9a       	sbi	0x04, 0	; 4
+		 	DDRC |= 0x20;
+  82:	3d 9a       	sbi	0x07, 5	; 7
+			DDRD |= 0xFF;
+  84:	8a b1       	in	r24, 0x0a	; 10
+  86:	8f ef       	ldi	r24, 0xFF	; 255
+  88:	8a b9       	out	0x0a, r24	; 10
+  8a:	08 95       	ret
 
-0000008e <allOn>:
-			 
+0000008c <allOn>:
+		 
 }
 
 void allOn(){
 	
-			DDRB  = 0x01;
-  8e:	81 e0       	ldi	r24, 0x01	; 1
-  90:	84 b9       	out	0x04, r24	; 4
-		 	DDRD  = 0xFF;
+			PORTB  |= 0x01;
+  8c:	28 9a       	sbi	0x05, 0	; 5
+		 	PORTC  |= 0x20;
+  8e:	45 9a       	sbi	0x08, 5	; 8
+		 	PORTD  |= 0xFF;
+  90:	8b b1       	in	r24, 0x0b	; 11
   92:	8f ef       	ldi	r24, 0xFF	; 255
-  94:	8a b9       	out	0x0a, r24	; 10
-		 	DDRC  = 0x10;
-  96:	80 e1       	ldi	r24, 0x10	; 16
-  98:	87 b9       	out	0x07, r24	; 7
-  9a:	08 95       	ret
+  94:	8b b9       	out	0x0b, r24	; 11
+  96:	08 95       	ret
 
-0000009c <main>:
+00000098 <allOff>:
+
+}
+
+void allOff(){
+	
+			PORTB  &= 0xFE;
+  98:	28 98       	cbi	0x05, 0	; 5
+			PORTC  &= 0xDF;
+  9a:	45 98       	cbi	0x08, 5	; 8
+			PORTD  &= 0x00;	
+  9c:	8b b1       	in	r24, 0x0b	; 11
+  9e:	1b b8       	out	0x0b, r1	; 11
+  a0:	08 95       	ret
+
+000000a2 <main>:
+//Include Drivers
 #include "LedBar.h"
 
 int main(void)
 {
-	
-	initLED();
-  9c:	0e 94 40 00 	call	0x80	; 0x80 <initLED>
-	allOn();
-  a0:	0e 94 47 00 	call	0x8e	; 0x8e <allOn>
+	cli();
+  a2:	f8 94       	cli
+	initLED();		
+  a4:	0e 94 40 00 	call	0x80	; 0x80 <initLED>
 	
     /* Replace with your application code */
-    while (1) 
-    {	
-		sleep_enable();
-  a4:	83 b7       	in	r24, 0x33	; 51
-  a6:	81 60       	ori	r24, 0x01	; 1
-  a8:	83 bf       	out	0x33, r24	; 51
-  aa:	fc cf       	rjmp	.-8      	; 0xa4 <main+0x8>
+    while(1){
 
-000000ac <_exit>:
-  ac:	f8 94       	cli
+		allOn();
+  a8:	0e 94 46 00 	call	0x8c	; 0x8c <allOn>
+  ac:	84 e6       	ldi	r24, 0x64	; 100
+  ae:	90 e0       	ldi	r25, 0x00	; 0
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
 
-000000ae <__stop_program>:
-  ae:	ff cf       	rjmp	.-2      	; 0xae <__stop_program>
+	__builtin_avr_delay_cycles(__ticks_dc);
+  b0:	ef e3       	ldi	r30, 0x3F	; 63
+  b2:	fc e9       	ldi	r31, 0x9C	; 156
+  b4:	31 97       	sbiw	r30, 0x01	; 1
+  b6:	f1 f7       	brne	.-4      	; 0xb4 <main+0x12>
+  b8:	00 c0       	rjmp	.+0      	; 0xba <main+0x18>
+  ba:	00 00       	nop
+  bc:	01 97       	sbiw	r24, 0x01	; 1
+	
+		for (int i = 0; i <100; i++)
+  be:	c1 f7       	brne	.-16     	; 0xb0 <main+0xe>
+		{
+			_delay_ms(10);
+		}
+		allOff();
+  c0:	0e 94 4c 00 	call	0x98	; 0x98 <allOff>
+			
+    }
+  c4:	f1 cf       	rjmp	.-30     	; 0xa8 <main+0x6>
+
+000000c6 <_exit>:
+  c6:	f8 94       	cli
+
+000000c8 <__stop_program>:
+  c8:	ff cf       	rjmp	.-2      	; 0xc8 <__stop_program>

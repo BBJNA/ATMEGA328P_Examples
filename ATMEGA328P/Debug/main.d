@@ -14,7 +14,10 @@ main.d main.o: .././main.c \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
+ y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
+ y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
+ y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  ../drivers/LedBar.h
 
 y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
@@ -47,6 +50,12 @@ y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.
 
 y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
-y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
+y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
+
+y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
+
+y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+y:\atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
 ../drivers/LedBar.h:

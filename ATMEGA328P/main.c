@@ -5,24 +5,33 @@
  * Author : Jordan Williams
  */ 
 
+#define F_CPU 16000000UL
+
 #include <avr/io.h>
 #include "avr/sleep.h"
 #include <stdio.h>
-#include <string.h>
-
+#include <util/delay.h>
+#include <util/delay_basic.h>
+#include <avr/interrupt.h>
 
 //Include Drivers
 #include "LedBar.h"
 
 int main(void)
 {
-	
-	initLED();
-	allOn();
+	cli();
+	initLED();		
 	
     /* Replace with your application code */
-    while (1) 
-    {	
-		sleep_enable();
+    while(1){
+
+		allOn();
+	
+		for (int i = 0; i <100; i++)
+		{
+			_delay_ms(10);
+		}
+		allOff();
+			
     }
 }

@@ -10,7 +10,6 @@ Discarded input sections
  .text          0x00000000        0x0 drivers/LedBar.o
  .data          0x00000000        0x0 drivers/LedBar.o
  .bss           0x00000000        0x0 drivers/LedBar.o
- .text.allOff   0x00000000        0x8 drivers/LedBar.o
  .text.toggleAll
                 0x00000000        0x2 drivers/LedBar.o
  .text          0x00000000        0x0 main.o
@@ -158,7 +157,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000       0xb0
+.text           0x00000000       0xca
  *(.vectors)
  .vectors       0x00000000       0x68 Y:/ATMEL/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -241,17 +240,19 @@ END GROUP
                 0x0000007c                __vector_20
                 0x00000080                . = ALIGN (0x2)
  *(.text.*)
- .text.initLED  0x00000080        0xe drivers/LedBar.o
+ .text.initLED  0x00000080        0xc drivers/LedBar.o
                 0x00000080                initLED
- .text.allOn    0x0000008e        0xe drivers/LedBar.o
-                0x0000008e                allOn
- .text.main     0x0000009c       0x10 main.o
-                0x0000009c                main
-                0x000000ac                . = ALIGN (0x2)
+ .text.allOn    0x0000008c        0xc drivers/LedBar.o
+                0x0000008c                allOn
+ .text.allOff   0x00000098        0xa drivers/LedBar.o
+                0x00000098                allOff
+ .text.main     0x000000a2       0x24 main.o
+                0x000000a2                main
+                0x000000c6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000000ac        0x0 y:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x000000ac                _exit
-                0x000000ac                exit
+ .fini9         0x000000c6        0x0 y:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000000c6                _exit
+                0x000000c6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -270,11 +271,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000000ac        0x4 y:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000000c6        0x4 y:/atmel/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000000b0                _etext = .
+                0x000000ca                _etext = .
 
-.data           0x00800100        0x0 load address 0x000000b0
+.data           0x00800100        0x0 load address 0x000000ca
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -291,8 +292,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x000000b0                __data_load_start = LOADADDR (.data)
-                0x000000b0                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000000ca                __data_load_start = LOADADDR (.data)
+                0x000000ca                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800100        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -374,39 +375,40 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x775
+.debug_info     0x00000000      0x81b
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 Y:/ATMEL/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4       0xc1 drivers/LedBar.o
- .debug_info    0x000006b5       0xc0 main.o
+ .debug_info    0x000006b5      0x166 main.o
 
-.debug_abbrev   0x00000000      0x666
+.debug_abbrev   0x00000000      0x6e6
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 Y:/ATMEL/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2       0x4f drivers/LedBar.o
- .debug_abbrev  0x000005f1       0x75 main.o
+ .debug_abbrev  0x000005f1       0xf5 main.o
 
-.debug_line     0x00000000      0x2ce
+.debug_line     0x00000000      0x333
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x133 Y:/ATMEL/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000133       0xee drivers/LedBar.o
- .debug_line    0x00000221       0xad main.o
+ .debug_line    0x00000221      0x112 main.o
 
 .debug_frame    0x00000000       0x78
  *(.debug_frame)
  .debug_frame   0x00000000       0x54 drivers/LedBar.o
  .debug_frame   0x00000054       0x24 main.o
 
-.debug_str      0x00000000      0x379
+.debug_str      0x00000000      0x3c4
  *(.debug_str)
  .debug_str     0x00000000      0x208 Y:/ATMEL/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208      0x160 drivers/LedBar.o
                                 0x194 (size before relaxing)
- .debug_str     0x00000368       0x11 main.o
-                                0x185 (size before relaxing)
+ .debug_str     0x00000368       0x5c main.o
+                                0x1cf (size before relaxing)
 
-.debug_loc
+.debug_loc      0x00000000       0x8c
  *(.debug_loc)
+ .debug_loc     0x00000000       0x8c main.o
 
 .debug_macinfo
  *(.debug_macinfo)

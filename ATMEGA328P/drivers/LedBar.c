@@ -9,26 +9,25 @@
 
 void initLED(){
 	
-		 	PORTB = 0x01;
-		 	PORTD = 0xFF;
-		 	PORTC = 0x10;
-			 
+		 	DDRB |= 0X01;
+		 	DDRC |= 0x20;
+			DDRD |= 0xFF;
+		 
 }
 
 void allOn(){
 	
-			DDRB  = 0x01;
-		 	DDRD  = 0xFF;
-		 	DDRC  = 0x10;
+			PORTB  |= 0x01;
+		 	PORTC  |= 0x20;
+		 	PORTD  |= 0xFF;
 
 }
 
 void allOff(){
 	
-			DDRB  = 0x00;
-			DDRD  = 0x00;
-			DDRC  = 0x00;
-	
+			PORTB  &= 0xFE;
+			PORTC  &= 0xDF;
+			PORTD  &= 0x00;	
 }
 
 void toggleAll(){
